@@ -1,0 +1,7 @@
+services:
+  frontend:
+    build: .
+    container_name: flashcards-webapp
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
