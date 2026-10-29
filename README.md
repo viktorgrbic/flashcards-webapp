@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Flashcards webapp
 
-## Getting Started
+Veb aplikacija za pregled špilova kartica za učenje (flashcards), grupisanih po predmetima.
+Domaći zadatak iz predmeta Internet tehnologije, FON.
 
-First, run the development server:
+## Funkcionalnosti
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- prikaz špilova u mreži kartica (naziv špila i predmet)
+- pretraga špilova po nazivu
+- klik na karticu vodi na stranicu špila (`/decks/:id`)
+- responzivan raspored: 1 kolona na telefonu, do 4 kolone na velikom ekranu
+
+Podaci su trenutno probni (mock), u `src/mock/data.ts`.
+
+## Tehnologije
+
+- Next.js (App Router) + React
+- TypeScript
+- Tailwind CSS
+- Docker i docker-compose
+
+## Struktura
+
+```text
+src/
+├── app/page.tsx                 početna stranica
+├── components/DeckBrowser.tsx   pretraga i mreža špilova
+├── mock/data.ts                 probni predmeti i špilovi
+└── shared/types.ts              TypeScript tipovi (FullDeckDto, FullSubjectDto)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Pokretanje preko Docker-a
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Potreban je samo Docker Desktop.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+docker compose up --build
+```
 
-## Learn More
+Aplikacija je na [http://localhost:3000](http://localhost:3000). Gašenje: `Ctrl+C`, pa `docker compose down`.
 
-To learn more about Next.js, take a look at the following resources:
+## Pokretanje za razvoj (bez Docker-a)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Potreban je Node.js 20.9 ili noviji.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm install
+npm run dev
+```
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Aplikacija je na [http://localhost:3000](http://localhost:3000).
